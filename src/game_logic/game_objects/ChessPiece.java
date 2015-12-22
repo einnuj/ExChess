@@ -1,6 +1,8 @@
 package game_logic.game_objects;
 
 /**
+ * Abstract class representing traits/methods all pieces should have
+ *
  * Created by einnuj on 12/21/2015.
  */
 public abstract class ChessPiece {
