@@ -7,35 +7,52 @@ package game_logic.game_objects;
  */
 public abstract class ChessPiece {
     // Is this piece white or black?
-    private boolean white = true;
+    protected boolean white = true;
 
     // Currently being 'held'
-    private boolean activePiece = false;
+    protected boolean activePiece = false;
 
     // X by Y coordinates of piece
-    private int[] location = new int[2];
+    protected int[] location = new int[2];
 
+    /*
+    Constructors
+     */
+
+    protected ChessPiece() {}
+
+    protected ChessPiece(boolean white) {
+        this.white = white;
+        setLocation(new int[] {-1, -1});
+    }
+
+    protected ChessPiece(boolean white, int[] location) {
+        this.white = white;
+        setActivePiece(false);
+        setLocation(location);
+    }
 
     /*
     Getters
      */
 
-    private boolean isWhite() { return white; }
+    protected boolean isWhite() { return white; }
 
-    private boolean isActivePiece() { return activePiece; }
+    protected boolean isActivePiece() { return activePiece; }
 
-    private int[] getLocation() { return location; }
+    protected int[] getLocation() { return location; }
 
     /*
     Setters
      */
 
-    private void setActivePiece(boolean activePiece) {
+    protected void setActivePiece(boolean activePiece) {
         this.activePiece = activePiece;
     }
 
-    private void setLocation(int[] location) {
-        this.location = location;
+    protected void setLocation(int[] location) {
+        this.location[0] = location[0];
+        this.location[1] = location[1];
     }
 
 
@@ -48,5 +65,5 @@ public abstract class ChessPiece {
      * @param target - the coordinates the piece is to be moved
      * @return a boolean reflecting whether the move is legal
      */
-    abstract boolean isValidMove(int[] target);
+    protected abstract boolean isValidMove(int[] target);
 }
