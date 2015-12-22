@@ -22,16 +22,16 @@ public class KnightPiece extends ChessPiece {
         super(white, location);
     }
 
+
     /*
     Methods
      */
 
     @Override
     protected boolean isValidMove(int[] target) {
-        // Check for an Out-Of-Bounds move
-        if (target[0] > 7 || target[0] < 0 || target[0] > 5 || target[1] < 0) {
-            return false;
-        }
+        // We must assume this target is within the bounds of the board. Let
+        // the controller check this for us, as our pieces have no business
+        // doing so.
 
         // Create a temp location to mess around with
         int x = this.location[0];
