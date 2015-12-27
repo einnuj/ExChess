@@ -36,11 +36,11 @@ public abstract class ChessPiece {
     Getters
      */
 
-    protected boolean isWhite() { return white; }
+    public boolean isWhite() { return white; }
 
-    protected boolean isActivePiece() { return activePiece; }
+    public boolean isActivePiece() { return activePiece; }
 
-    protected int[] getLocation() { return location; }
+    public int[] getLocation() { return location; }
 
     /*
     Setters
@@ -57,7 +57,7 @@ public abstract class ChessPiece {
 
 
     /*
-    Methods
+    Abstract Methods
      */
 
     /**
