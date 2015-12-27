@@ -1,4 +1,4 @@
-package game_logic.game_objects;
+package main.java.game_objects;
 
 /**
  * Abstract class representing traits/methods all pieces should have

@@ -1,4 +1,4 @@
-package game_logic.game_objects;
+package main.java.game_objects;
 
 /**
  * Object that inherits ChessPiece, representing a Knight
