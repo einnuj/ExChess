@@ -1,6 +1,5 @@
 package main.java.game_objects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +8,7 @@ import java.util.List;
  * Created by einnuj on 12/27/2015.
  */
 public abstract class Board {
-    protected ArrayList<ArrayList> grid = null;
+    protected int[][] grid = new int[8][8];
     protected boolean isEmpty = true;
     protected int[] activePieceLocation = new int[] {-1, -1};
     protected List<Object> capturedPieces = null;
@@ -17,17 +16,10 @@ public abstract class Board {
     protected Board() {}
 
     protected Board(int size) {
-        grid = new ArrayList<ArrayList>(size);
-        for (int i = 0; i < size; i++) {
-            ArrayList<Object> aList = new ArrayList<Object>(size);
-            for (int j = 0; j < size; j++) {
-                aList.add(null);
-            }
-            grid.add(aList);
-        }
+        grid = new int[size][size];
     }
 
-    protected Board(ArrayList<ArrayList> grid) {
+    protected Board(int[][] grid) {
         this.grid = grid;
     }
 
@@ -43,7 +35,7 @@ public abstract class Board {
     Setters
      */
 
-    protected void setGrid(ArrayList<ArrayList> grid) { this.grid = grid; }
+    protected void setGrid(int[][] grid) { this.grid = grid; }
 
     protected void setActivePieceLocation(int[] activePieceLocation) {
         this.activePieceLocation[0] = activePieceLocation[0];
@@ -56,12 +48,15 @@ public abstract class Board {
      */
 
     /**
-     * Empties the board
+     * Empties the board and sets isEmpty to true
      */
     protected void clearBoard() {
-        for (ArrayList a : grid) {
-            a.clear();
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                grid[i][j] = -1;
+            }
         }
+        isEmpty = true;
     }
 
     /**
@@ -70,17 +65,24 @@ public abstract class Board {
      * @param pieceLocation the location of the piece to move
      * @param targetLocation the location the piece should move to
      */
-    // @TODO: finish this first!
     protected void movePiece(int[] pieceLocation, int[] targetLocation) {
-        return;
+        int movingPiece = grid[pieceLocation[0]][pieceLocation[1]];
+        grid[pieceLocation[0]][pieceLocation[1]] = -1;
+        grid[targetLocation[0]][targetLocation[1]] = movingPiece;
     }
 
     /**
      * Pretty prints the board
      */
-    // @TODO: second. Also, decide on int lookup or pure object lists.
     protected void printBoard() {
-        return;
+        for (int i = 0; i < grid.length; i++) {
+            StringBuilder s = new StringBuilder();
+            for (int j = 0; j < grid[i].length; j++) {
+                s.append(grid[i][j]);
+                s.append(' ');
+            }
+            System.out.println(s);
+        }
     }
 
     /*
