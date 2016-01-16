@@ -1,5 +1,6 @@
 package main.java.game_objects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +32,8 @@ public abstract class Board {
 
     protected int[] getActivePieceLocation() { return activePieceLocation; }
 
+    protected List<Object> getCapturedPieces() { return capturedPieces; }
+
     /*
     Setters
      */
@@ -40,6 +43,10 @@ public abstract class Board {
     protected void setActivePieceLocation(int[] activePieceLocation) {
         this.activePieceLocation[0] = activePieceLocation[0];
         this.activePieceLocation[1] = activePieceLocation[1];
+    }
+
+    protected void setCapturedPieces(ArrayList<Object> capturedPieces) {
+        this.capturedPieces = capturedPieces;
     }
 
 
@@ -57,6 +64,29 @@ public abstract class Board {
             }
         }
         isEmpty = true;
+    }
+
+    /**
+     * Resets active piece location
+     */
+    protected void resetActivePiece() {
+        setActivePieceLocation(new int[] {-1, -1});
+    }
+
+    /**
+     * Clears captured pieces
+     */
+    protected void clearCapturedPieces() {
+        setCapturedPieces(new ArrayList<Object>());
+    }
+
+    /**
+     * Resets the board entirely
+     */
+    protected void resetBoard() {
+        clearBoard();
+        resetActivePiece();
+        clearCapturedPieces();
     }
 
     /**
